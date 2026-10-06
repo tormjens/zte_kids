@@ -1,0 +1,30 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "ZTE Kids Watch",
+        "description": "Sign in with the same account you use in the ZTE Kids / ChildrenWatch app.",
+        "data": {
+          "login_name": "Phone number or email",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid login or password.",
+      "cannot_connect": "Could not reach the ZTE Kids service."
+    },
+    "abort": {
+      "already_configured": "This account is already set up."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "steps": { "name": "Steps" },
+      "last_fix": { "name": "Last location fix" }
+    },
+    "button": {
+      "refresh_location": { "name": "Refresh location" }
+    }
+  }
+}

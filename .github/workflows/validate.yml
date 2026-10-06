@@ -17,6 +17,9 @@ jobs:
         uses: hacs/action@main
         with:
           category: integration
+          # 'brands' requires submitting assets to the home-assistant/brands
+          # repo; not needed to install from a custom repository.
+          ignore: brands
 
   hassfest:
     name: hassfest

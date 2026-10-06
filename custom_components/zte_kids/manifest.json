@@ -1,11 +1,13 @@
 {
   "domain": "zte_kids",
   "name": "ZTE Kids Watch",
-  "codeowners": ["@tormjens"],
+  "codeowners": [
+    "@tormjens"
+  ],
   "config_flow": true,
   "documentation": "https://github.com/tormjens/zte_kids",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/tormjens/zte_kids/issues",
   "requirements": [],
-  "version": "0.1.1"
+  "version": "0.1.2"
 }

@@ -23,6 +23,16 @@ async def async_setup_entry(
     )
 
 
+def _coord(value) -> float | None:
+    """The ZTE API returns coordinates as strings; HA needs real floats."""
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 class ZteKidsTracker(CoordinatorEntity[ZteKidsCoordinator], TrackerEntity):
     _attr_has_entity_name = True
     _attr_name = None  # the device name is the watch name
@@ -52,15 +62,18 @@ class ZteKidsTracker(CoordinatorEntity[ZteKidsCoordinator], TrackerEntity):
 
     @property
     def latitude(self) -> float | None:
-        return self._watch.get("lat")
+        return _coord(self._watch.get("lat"))
 
     @property
     def longitude(self) -> float | None:
-        return self._watch.get("lon")
+        return _coord(self._watch.get("lon"))
 
     @property
     def location_accuracy(self) -> int:
-        return int(self._watch.get("accuracy") or 0)
+        try:
+            return int(float(self._watch.get("accuracy") or 0))
+        except (TypeError, ValueError):
+            return 0
 
     @property
     def extra_state_attributes(self) -> dict:
